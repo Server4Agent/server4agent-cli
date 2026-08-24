@@ -1,0 +1,48 @@
+{
+  "name": "@server4agent/cli",
+  "version": "0.1.0",
+  "description": "Command line interface for Server4Agent. Sign in from a browser and hold the credential for your shell, scripts, and MCP config.",
+  "type": "module",
+  "bin": {
+    "server4agent": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "server4agent",
+    "cli",
+    "agents",
+    "mcp"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Server4Agent/server4agent-cli"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5",
+    "vitest": "^4"
+  }
+}
