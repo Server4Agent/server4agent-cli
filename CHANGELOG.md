@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.0
+
+- Requires Node 22 or newer. Node 18 and 20 are both past end of life, so the
+  floor now sits on the oldest release that still gets upstream fixes. The
+  commands themselves are unchanged.
+
+## 0.1.2
+
+- `server4agent whoami` names you as well as the account when your key belongs
+  to a teammate rather than the account owner, e.g.
+  `grace@example.com in ada@example.com  via laptop`. Inside someone else's
+  account those are different answers, and printing only the account reads as
+  if you were signed in as its owner. A solo key prints exactly what it did
+  before.
+
+## 0.1.1
+
+- `server4agent whoami` now prints the account it is signed in as. It read
+  `email` from the top level of the `/me` response, where no such field exists,
+  so it printed `(unknown account)` for everyone regardless of the key. The
+  account fields are nested under `account`, and it reads them there now.
+
 ## 0.1.0
 
 First release.

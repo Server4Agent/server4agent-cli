@@ -11,6 +11,7 @@ import { resolveEndpoints } from "./config.js";
 import { clearCredential, credentialsPath, loadCredential, saveCredential } from "./credentials.js";
 import { login } from "./login.js";
 import { VERSION } from "./version.js";
+import { formatIdentity, type MeResponse } from "./whoami.js";
 
 const HELP = `server4agent ${VERSION}
 
@@ -99,9 +100,8 @@ async function cmdWhoami(): Promise<void> {
   if (res.status === 401) fail("The stored key is not valid. Run `server4agent login` again.");
   if (!res.ok) fail(`Could not read the account (HTTP ${res.status}).`);
 
-  const me = (await res.json()) as { email?: string };
-  const source = credential.label === "SERVER4AGENT_API_KEY" ? "SERVER4AGENT_API_KEY" : credential.label;
-  process.stdout.write(`${me.email ?? "(unknown account)"}  via ${source ?? "stored key"}\n`);
+  const me = (await res.json()) as MeResponse;
+  process.stdout.write(`${formatIdentity(me, credential.label)}\n`);
 }
 
 async function main(): Promise<void> {

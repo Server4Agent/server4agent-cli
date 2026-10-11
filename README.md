@@ -21,7 +21,7 @@ Or run it without installing:
 npx @server4agent/cli login
 ```
 
-Node 18+, no runtime dependencies.
+Node 22+, no runtime dependencies.
 
 ## Sign in
 
